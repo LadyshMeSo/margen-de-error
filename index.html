@@ -1,0 +1,3078 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Margen de Error: portal educativo interactivo sobre métodos numéricos, aproximaciones y análisis de errores.">
+
+    <meta name="author" content="Lady Solis y Itzel Guzmán">
+
+    <meta name="theme-color" content="#00204D">
+
+    <title>Margen de Error</title>
+
+    <!-- Favicon (mismo ícono amarillo del logo) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%23E9CC0A'/%3E%3Cpath d='M15 16v33h34' fill='none' stroke='%2300204D' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M22 39l9-10 7 6 11-13' fill='none' stroke='%2300204D' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+
+    <!-- Tipografías -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- MathJax para expresiones matemáticas -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+    <!-- JavaScript principal -->
+    <script defer src="js/main.js"></script>
+</head>
+
+<body>
+
+    <!-- ==============================
+         NAVEGACIÓN
+    =============================== -->
+
+    <header class="header" id="header">
+
+        <nav class="navbar container">
+
+            <a href="#inicio" class="brand">
+                <span class="brand-icon">
+                    <i class="fa-solid fa-chart-line" aria-hidden="true"></i>
+                </span>
+
+                <span class="brand-text">
+                    Margen de Error
+                    <small>MÉTODOS NUMÉRICOS</small>
+                </span>
+            </a>
+
+            <button type="button" class="menu-toggle" id="menuToggle"
+                    aria-label="Abrir menú"
+                    aria-expanded="false">
+                <i class="fa-solid fa-bars" aria-hidden="true"></i>
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#inicio" class="nav-link active">Inicio</a></li>
+                <li><a href="#glosario" class="nav-link">Glosario</a></li>
+                <li><a href="#clasificacion" class="nav-link">Clasificación</a></li>
+                <li><a href="#caso-practico" class="nav-link">Caso práctico</a></li>
+                <li><a href="#zona-interactiva" class="nav-link">Zona interactiva</a></li>
+                <li><a href="#equipo" class="nav-link">Equipo</a></li>
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+    <main>
+
+        <!-- ==============================
+             PORTADA
+        =============================== -->
+
+        <section class="hero" id="inicio">
+
+            <div class="hero-background"></div>
+
+            <div class="container hero-content">
+
+                <div class="hero-label">
+                    <span class="status-dot"></span>
+                    PORTAL EDUCATIVO INTERACTIVO
+                </div>
+
+                <h1>
+                    Margen de
+                    <span>Error.</span>
+                </h1>
+
+                <p class="hero-subtitle">
+                    Métodos Numéricos
+                </p>
+
+                <p class="hero-description">
+                    Comprender la aproximación. Analizar el error.
+                    Mejorar la precisión.
+                </p>
+
+                <p class="hero-text">
+                    Explora los fundamentos del análisis numérico
+                    mediante conceptos, ejemplos de ingeniería y
+                    herramientas interactivas.
+                </p>
+
+                <div class="hero-actions">
+
+                    <a href="#glosario" class="btn btn-primary">
+                        Explorar conceptos
+                        <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                    </a>
+
+                    <a href="#equipo" class="btn btn-outline">
+                        Conocer el proyecto
+                    </a>
+
+                </div>
+
+                <div class="hero-bottom">
+
+                    <span>01 — FUNDAMENTOS DEL ANÁLISIS NUMÉRICO</span>
+
+                    <span>
+                        <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                        DESLIZA PARA EXPLORAR
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==============================
+             INTRODUCCIÓN
+        =============================== -->
+
+        <section class="intro section-padding">
+
+            <div class="container intro-grid">
+
+                <div class="section-heading">
+
+                    <span class="eyebrow">INTRODUCCIÓN</span>
+
+                    <h2>
+                        Cuando la solución exacta
+                        <span>no es suficiente.</span>
+                    </h2>
+
+                </div>
+
+                <div class="intro-content">
+
+                    <p>
+                        En ingeniería, muchos problemas requieren
+                        encontrar soluciones mediante cálculos
+                        aproximados. Los métodos numéricos permiten
+                        resolverlos utilizando procedimientos
+                        matemáticos que mejoran progresivamente
+                        un resultado.
+                    </p>
+
+                    <p>
+                        Sin embargo, toda aproximación tiene un
+                        margen de error. Comprenderlo permite
+                        evaluar la confiabilidad de los resultados
+                        y tomar mejores decisiones.
+                    </p>
+
+                    <a href="#glosario" class="text-link">
+                        Comenzar aprendizaje
+                        <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==============================
+             GLOSARIO VISUAL
+        =============================== -->
+
+        <section class="glossary section-padding" id="glosario">
+
+            <div class="container">
+
+                <div class="section-header">
+
+                    <div>
+                        <span class="eyebrow">01 / CONCEPTOS FUNDAMENTALES</span>
+
+                        <h2>Glosario <span>visual.</span></h2>
+
+                        <p class="section-description">
+                            Ocho conceptos esenciales para comprender
+                            los métodos numéricos y el análisis de errores.
+                        </p>
+                    </div>
+
+                    <div class="glossary-counter">
+                        <strong>08</strong>
+                        <span>CONCEPTOS</span>
+                    </div>
+
+                </div>
+
+
+                <!-- FILTROS -->
+
+                <div class="glossary-filters">
+
+                    <button type="button" class="filter-btn active"
+                            data-filter="all">
+                        Todos
+                    </button>
+
+                    <button type="button" class="filter-btn"
+                            data-filter="fundamentos">
+                        Fundamentos
+                    </button>
+
+                    <button type="button" class="filter-btn"
+                            data-filter="medicion">
+                        Medición
+                    </button>
+
+                </div>
+
+
+                <!-- TARJETAS -->
+
+                <div class="glossary-grid">
+
+
+                    <!-- 01 MÉTODO NUMÉRICO -->
+
+                    <article class="concept-card"
+                             data-category="fundamentos"
+                             id="concepto-metodo">
+
+                        <div class="card-top">
+                            <span class="card-number">01 / 08</span>
+                            <span class="card-tag">FUNDAMENTOS</span>
+                        </div>
+
+                        <div class="card-icon">
+                            <i class="fa-solid fa-calculator" aria-hidden="true"></i>
+                        </div>
+
+                        <h3>Método numérico</h3>
+
+                        <p>
+                            Procedimiento matemático que permite
+                            obtener soluciones aproximadas mediante
+                            operaciones aritméticas y cálculos
+                            repetidos.
+                        </p>
+
+                        <div class="card-example">
+                            <span>EJEMPLO</span>
+                            <strong>Aproximación de √2</strong>
+                        </div>
+
+                        <button type="button" class="expand-btn"
+                                data-target="detail-metodo"
+                                aria-controls="detail-metodo">
+                            Explorar concepto
+                            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                        </button>
+
+                        <div class="concept-detail" id="detail-metodo" hidden>
+
+                            <h4>¿Cómo funciona?</h4>
+
+                            <p>
+                                Algunos problemas matemáticos no
+                                tienen una solución sencilla mediante
+                                despejes. En esos casos, se parte de
+                                un valor inicial y se mejora mediante
+                                iteraciones hasta obtener un resultado
+                                suficientemente cercano al deseado.
+                            </p>
+
+                            <h4>Aplicación en ingeniería</h4>
+
+                            <p>
+                                El cálculo del factor de fricción en
+                                una tubería mediante la ecuación
+                                implícita de Colebrook requiere
+                                procedimientos iterativos.
+                            </p>
+
+                            <div class="formula-box">
+                                $$x_{n+1}=\frac{1}{2}
+                                \left(x_n+\frac{2}{x_n}\right)$$
+                            </div>
+
+                            <div class="demo-box">
+
+                                <div class="demo-heading">
+                                    <h4>Laboratorio de iteraciones</h4>
+                                    <span class="live-label">EN VIVO</span>
+                                </div>
+
+                                <p class="demo-description">
+                                    Observa cómo el resultado se
+                                    aproxima a √2.
+                                </p>
+
+                                <div class="iteration-result">
+                                    <span>APROXIMACIÓN ACTUAL</span>
+                                    <strong id="iterationValue">1.000000</strong>
+                                </div>
+
+                                <div class="iteration-result">
+                                    <span>ERROR ABSOLUTO</span>
+                                    <strong id="iterationError">0.414214</strong>
+                                </div>
+
+                                <div class="table-wrapper">
+                                    <table class="data-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Iteración</th>
+                                                <th>Resultado</th>
+                                                <th>Error</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody id="iterationTable">
+                                            <tr>
+                                                <td>0</td>
+                                                <td>1.000000</td>
+                                                <td>0.414214</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <button type="button" class="btn btn-primary btn-full"
+                                        id="nextIteration">
+                                    Siguiente iteración
+                                    <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                                </button>
+
+                                <button type="button" class="reset-btn"
+                                        id="resetIteration">
+                                    Reiniciar ejercicio
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 02 APROXIMACIÓN -->
+
+                    <article class="concept-card"
+                             data-category="fundamentos"
+                             id="concepto-aproximacion">
+
+                        <div class="card-top">
+                            <span class="card-number">02 / 08</span>
+                            <span class="card-tag">FUNDAMENTOS</span>
+                        </div>
+
+                        <div class="card-icon">
+                            <i class="fa-solid fa-bullseye" aria-hidden="true"></i>
+                        </div>
+
+                        <h3>Aproximación</h3>
+
+                        <p>
+                            Valor cercano al verdadero que se utiliza
+                            como representación para resolver un
+                            problema.
+                        </p>
+
+                        <div class="card-example">
+                            <span>EJEMPLO</span>
+                            <strong>π ≈ 3.1416</strong>
+                        </div>
+
+                        <button type="button" class="expand-btn"
+                                data-target="detail-aproximacion"
+                                aria-controls="detail-aproximacion">
+                            Explorar concepto
+                            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                        </button>
+
+                        <div class="concept-detail"
+                             id="detail-aproximacion" hidden>
+
+                            <h4>¿Por qué se utiliza?</h4>
+
+                            <p>
+                                En muchos cálculos no es necesario
+                                utilizar un valor exacto o con infinitas
+                                cifras decimales. Se utiliza una
+                                aproximación suficientemente cercana
+                                según las necesidades del problema.
+                            </p>
+
+                            <h4>Aplicación en ingeniería</h4>
+
+                            <p>
+                                Al calcular el área de la base de un
+                                tanque circular, podemos utilizar
+                                π ≈ 3.1416.
+                            </p>
+
+                            <div class="formula-box">
+                                $$A=\pi r^2$$
+                            </div>
+
+                            <div class="demo-box">
+
+                                <div class="demo-heading">
+                                    <h4>Recta de aproximación</h4>
+                                    <span class="live-label">INTERACTIVO</span>
+                                </div>
+
+                                <p class="demo-description">
+                                    Mueve el control para modificar
+                                    el valor aproximado de π.
+                                </p>
+
+                                <div class="number-line">
+
+                                    <div class="line-track">
+                                        <span class="true-marker"></span>
+                                        <span class="approx-marker"
+                                              id="approxMarker"></span>
+                                    </div>
+
+                                    <div class="line-labels">
+                                        <span>3.10</span>
+                                        <span>3.14159</span>
+                                        <span>3.18</span>
+                                    </div>
+
+                                </div>
+
+                                <label class="control-label"
+                                       for="approxSlider">
+                                    Valor aproximado
+                                    <strong id="approxValue">3.14000</strong>
+                                </label>
+
+                                <input type="range"
+                                       id="approxSlider"
+                                       min="3.10"
+                                       max="3.18"
+                                       step="0.00001"
+                                       value="3.14">
+
+                                <div class="result-strip">
+                                    <span>Distancia al valor verdadero</span>
+                                    <strong id="approxError">0.00159</strong>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 03 ERROR NUMÉRICO -->
+
+                    <article class="concept-card"
+                             data-category="fundamentos"
+                             id="concepto-error">
+
+                        <div class="card-top">
+                            <span class="card-number">03 / 08</span>
+                            <span class="card-tag">FUNDAMENTOS</span>
+                        </div>
+
+                        <div class="card-icon">
+                            <i class="fa-solid fa-ruler-horizontal" aria-hidden="true"></i>
+                        </div>
+
+                        <h3>Error numérico</h3>
+
+                        <p>
+                            Diferencia entre un valor verdadero
+                            y un valor aproximado, que permite
+                            medir qué tan lejos se encuentra
+                            una aproximación del resultado esperado.
+                        </p>
+
+                        <div class="card-example">
+                            <span>EJEMPLO</span>
+                            <strong>π = 3.14159... vs. 3.14</strong>
+                        </div>
+
+                        <button type="button" class="expand-btn"
+                                data-target="detail-error"
+                                aria-controls="detail-error">
+                            Explorar concepto
+                            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                        </button>
+
+                        <div class="concept-detail"
+                             id="detail-error" hidden>
+
+                            <h4>¿Cómo se interpreta?</h4>
+
+                            <p>
+                                El error numérico aparece al utilizar
+                                valores aproximados, realizar
+                                redondeos, truncamientos o trabajar
+                                con mediciones limitadas.
+                            </p>
+
+                            <h4>Aplicación en ingeniería</h4>
+
+                            <p>
+                                Al calcular la longitud de una
+                                circunferencia utilizando π = 3.14
+                                en lugar de su valor más preciso,
+                                se obtiene una pequeña diferencia.
+                            </p>
+
+                            <div class="formula-box">
+                                $$E_a=|V-V_a|$$
+                                <small>V = valor verdadero · Va = valor aproximado</small>
+                            </div>
+
+                            <div class="demo-box">
+
+                                <div class="demo-heading">
+                                    <h4>Calculadora de error</h4>
+                                    <span class="live-label">EN VIVO</span>
+                                </div>
+
+                                <label class="control-label"
+                                       for="trueValue">
+                                    Valor verdadero
+                                </label>
+
+                                <input class="number-input"
+                                       type="number"
+                                       id="trueValue"
+                                       value="3.14159"
+                                       step="any">
+
+                                <label class="control-label"
+                                       for="estimatedValue">
+                                    Valor aproximado
+                                </label>
+
+                                <input class="number-input"
+                                       type="number"
+                                       id="estimatedValue"
+                                       value="3.14"
+                                       step="any">
+
+                                <div class="calculation-result">
+
+                                    <span>ERROR ABSOLUTO</span>
+                                    <strong id="absoluteError">0.00159</strong>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 04 CIFRAS SIGNIFICATIVAS -->
+
+                    <article class="concept-card"
+                             data-category="medicion"
+                             id="concepto-cifras">
+
+                        <div class="card-top">
+                            <span class="card-number">04 / 08</span>
+                            <span class="card-tag">MEDICIÓN</span>
+                        </div>
+
+                        <div class="card-icon">
+                            <i class="fa-solid fa-hashtag" aria-hidden="true"></i>
+                        </div>
+
+                        <h3>Cifra significativa</h3>
+
+                        <p>
+                            Dígito que aporta información sobre
+                            la precisión de un valor medido.
+                            Incluye los dígitos ciertos y el
+                            primer dígito dudoso.
+                        </p>
+
+                        <div class="card-example">
+                            <span>EJEMPLO</span>
+                            <strong>0.00450 = 3 cifras</strong>
+                        </div>
+
+                        <button type="button" class="expand-btn"
+                                data-target="detail-cifras"
+                                aria-controls="detail-cifras">
+                            Explorar concepto
+                            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                        </button>
+
+                        <div class="concept-detail"
+                             id="detail-cifras" hidden>
+
+                            <h4>Reglas principales</h4>
+
+                            <ul class="detail-list">
+                                <li>Los ceros a la izquierda no cuentan.</li>
+                                <li>Los ceros entre cifras significativas sí cuentan.</li>
+                                <li>Los ceros finales después del punto decimal cuentan.</li>
+                            </ul>
+
+                            <h4>Aplicación en ingeniería</h4>
+
+                            <p>
+                                Si una balanza registra 12.35 g,
+                                reportar 12.3500 g podría expresar
+                                una precisión que el instrumento
+                                no proporciona.
+                            </p>
+
+                            <div class="demo-box">
+
+                                <div class="demo-heading">
+                                    <h4>Contador de cifras</h4>
+                                    <span class="live-label">INTERACTIVO</span>
+                                </div>
+
+                                <label class="control-label"
+                                       for="significantInput">
+                                    Escribe un número
+                                </label>
+
+                                <input class="number-input"
+                                       type="text"
+                                       id="significantInput"
+                                       value="0.00450"
+                                       placeholder="Ej. 0.00450">
+
+                                <div class="highlight-number"
+                                     id="highlightNumber">
+                                    0.00450
+                                </div>
+
+                                <div class="calculation-result">
+                                    <span>CIFRAS SIGNIFICATIVAS</span>
+                                    <strong id="significantCount">3</strong>
+                                </div>
+
+                                <small class="help-text">
+                                    Los ceros finales de números
+                                    enteros sin punto decimal pueden
+                                    ser ambiguos.
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 05 PRECISIÓN -->
+
+                    <article class="concept-card"
+                             data-category="medicion"
+                             id="concepto-precision">
+
+                        <div class="card-top">
+                            <span class="card-number">05 / 08</span>
+                            <span class="card-tag">MEDICIÓN</span>
+                        </div>
+
+                        <div class="card-icon">
+                            <i class="fa-solid fa-crosshairs" aria-hidden="true"></i>
+                        </div>
+
+                        <h3>Precisión</h3>
+
+                        <p>
+                            Grado de agrupación o cercanía entre
+                            varios resultados obtenidos al repetir
+                            una medición.
+                        </p>
+
+                        <div class="card-example">
+                            <span>EJEMPLO</span>
+                            <strong>25.02, 25.03, 25.02 mm</strong>
+                        </div>
+
+                        <button type="button" class="expand-btn"
+                                data-target="detail-precision"
+                                aria-controls="detail-precision">
+                            Explorar concepto
+                            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                        </button>
+
+                        <div class="concept-detail"
+                             id="detail-precision" hidden>
+
+                            <h4>¿Cómo se interpreta?</h4>
+
+                            <p>
+                                La precisión representa la
+                                repetibilidad. Cuando un instrumento
+                                produce resultados muy parecidos
+                                entre sí, se considera que tiene
+                                una buena precisión.
+                            </p>
+
+                            <h4>Aplicación en ingeniería</h4>
+
+                            <p>
+                                Un calibrador puede medir varias
+                                veces una pieza de 25.00 mm y
+                                registrar valores muy cercanos
+                                entre ellos.
+                            </p>
+
+                            <div class="formula-box">
+                                $$\text{Precisión}
+                                \longrightarrow
+                                \text{Baja dispersión}$$
+                            </div>
+
+                            <div class="demo-box">
+
+                                <div class="demo-heading">
+                                    <h4>Visualización de precisión</h4>
+                                </div>
+
+                                <div class="target-wrapper"
+                                     id="precisionTarget"></div>
+
+                                <p class="demo-description">
+                                    Los puntos representan mediciones
+                                    repetidas. Observa qué tan cerca
+                                    se encuentran entre sí.
+                                </p>
+
+                                <button type="button" class="btn btn-secondary btn-full"
+                                        id="changePrecision">
+                                    Cambiar dispersión
+                                    <i class="fa-solid fa-shuffle" aria-hidden="true"></i>
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 06 EXACTITUD -->
+
+                    <article class="concept-card"
+                             data-category="medicion"
+                             id="concepto-exactitud">
+
+                        <div class="card-top">
+                            <span class="card-number">06 / 08</span>
+                            <span class="card-tag">MEDICIÓN</span>
+                        </div>
+
+                        <div class="card-icon">
+                            <i class="fa-solid fa-crosshairs" aria-hidden="true"></i>
+                        </div>
+
+                        <h3>Exactitud</h3>
+
+                        <p>
+                            Grado de cercanía entre un valor
+                            medido o calculado y el valor
+                            verdadero o de referencia.
+                        </p>
+
+                        <div class="card-example">
+                            <span>EJEMPLO</span>
+                            <strong>Comparación con una pieza patrón</strong>
+                        </div>
+
+                        <button type="button" class="expand-btn"
+                                data-target="detail-exactitud"
+                                aria-controls="detail-exactitud">
+                            Explorar concepto
+                            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                        </button>
+
+                        <div class="concept-detail"
+                             id="detail-exactitud" hidden>
+
+                            <h4>Exactitud y precisión</h4>
+
+                            <p>
+                                Son características diferentes.
+                                Un conjunto de mediciones puede
+                                ser preciso sin ser exacto, o
+                                exacto sin presentar una gran
+                                precisión.
+                            </p>
+
+                            <h4>Cuatro escenarios posibles</h4>
+
+                            <div class="target-grid">
+
+                                <div class="target-item">
+                                    <div class="target-small"
+                                         data-target-case="both"></div>
+                                    <strong>Exacto y preciso</strong>
+                                    <small>Puntos agrupados en el centro.</small>
+                                </div>
+
+                                <div class="target-item">
+                                    <div class="target-small"
+                                         data-target-case="precision"></div>
+                                    <strong>Preciso, no exacto</strong>
+                                    <small>Puntos agrupados lejos del centro.</small>
+                                </div>
+
+                                <div class="target-item">
+                                    <div class="target-small"
+                                         data-target-case="accuracy"></div>
+                                    <strong>Exacto, no preciso</strong>
+                                    <small>Puntos dispersos alrededor del centro.</small>
+                                </div>
+
+                                <div class="target-item">
+                                    <div class="target-small"
+                                         data-target-case="neither"></div>
+                                    <strong>Ni exacto ni preciso</strong>
+                                    <small>Puntos dispersos y desplazados.</small>
+                                </div>
+
+                            </div>
+
+                            <p class="demo-description">
+                                El centro representa el valor
+                                verdadero y cada punto una medición.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 07 INCERTIDUMBRE -->
+
+                    <article class="concept-card"
+                             data-category="medicion"
+                             id="concepto-incertidumbre">
+
+                        <div class="card-top">
+                            <span class="card-number">07 / 08</span>
+                            <span class="card-tag">MEDICIÓN</span>
+                        </div>
+
+                        <div class="card-icon">
+                            <i class="fa-solid fa-arrows-left-right" aria-hidden="true"></i>
+                        </div>
+
+                        <h3>Incertidumbre</h3>
+
+                        <p>
+                            Parámetro que expresa la duda asociada
+                            a un resultado de medición y permite
+                            evaluar su confiabilidad.
+                        </p>
+
+                        <div class="card-example">
+                            <span>EJEMPLO</span>
+                            <strong>25.02 ± 0.03 mm</strong>
+                        </div>
+
+                        <button type="button" class="expand-btn"
+                                data-target="detail-incertidumbre"
+                                aria-controls="detail-incertidumbre">
+                            Explorar concepto
+                            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                        </button>
+
+                        <div class="concept-detail"
+                             id="detail-incertidumbre" hidden>
+
+                            <h4>¿Cómo se expresa?</h4>
+
+                            <p>
+                                Puede expresarse mediante un valor
+                                central acompañado de un margen
+                                de incertidumbre.
+                            </p>
+
+                            <h4>Aplicación en ingeniería</h4>
+
+                            <p>
+                                Una pieza puede tener una dimensión
+                                reportada de 25.00 ± 0.05 mm.
+                            </p>
+
+                            <div class="formula-box">
+                                $$x=x_m\pm u$$
+                            </div>
+
+                            <div class="demo-box">
+
+                                <div class="demo-heading">
+                                    <h4>Intervalo de incertidumbre</h4>
+                                    <span class="live-label">INTERACTIVO</span>
+                                </div>
+
+                                <div class="uncertainty-visual">
+
+                                    <div class="uncertainty-track">
+                                        <span class="uncertainty-range"
+                                              id="uncertaintyRange"></span>
+
+                                        <span class="uncertainty-center"></span>
+                                    </div>
+
+                                    <div class="uncertainty-labels">
+                                        <span id="lowerLimit">24.95</span>
+                                        <strong>25.00</strong>
+                                        <span id="upperLimit">25.05</span>
+                                    </div>
+
+                                </div>
+
+                                <label class="control-label"
+                                       for="uncertaintySlider">
+                                    Margen de incertidumbre
+                                    <strong id="uncertaintyValue">±0.05 mm</strong>
+                                </label>
+
+                                <input type="range"
+                                       id="uncertaintySlider"
+                                       min="0.01"
+                                       max="0.20"
+                                       step="0.01"
+                                       value="0.05">
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 08 SESGO -->
+
+                    <article class="concept-card"
+                             data-category="medicion"
+                             id="concepto-sesgo">
+
+                        <div class="card-top">
+                            <span class="card-number">08 / 08</span>
+                            <span class="card-tag">MEDICIÓN</span>
+                        </div>
+
+                        <div class="card-icon">
+                            <i class="fa-solid fa-arrow-right-arrow-left" aria-hidden="true"></i>
+                        </div>
+
+                        <h3>Sesgo</h3>
+
+                        <p>
+                            Desviación sistemática que provoca
+                            que los resultados se alejen del
+                            valor verdadero en una dirección
+                            determinada.
+                        </p>
+
+                        <div class="card-example">
+                            <span>EJEMPLO</span>
+                            <strong>Báscula que marca +0.5 kg</strong>
+                        </div>
+
+                        <button type="button" class="expand-btn"
+                                data-target="detail-sesgo"
+                                aria-controls="detail-sesgo">
+                            Explorar concepto
+                            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                        </button>
+
+                        <div class="concept-detail"
+                             id="detail-sesgo" hidden>
+
+                            <h4>¿Cómo se interpreta?</h4>
+
+                            <p>
+                                El sesgo aparece cuando existe
+                                una desviación sistemática en
+                                los resultados. A diferencia de
+                                las variaciones aleatorias,
+                                no desaparece simplemente
+                                repitiendo y promediando
+                                mediciones.
+                            </p>
+
+                            <h4>Aplicación en ingeniería</h4>
+
+                            <p>
+                                Una báscula mal calibrada puede
+                                registrar sistemáticamente
+                                0.5 kg más que el peso real.
+                            </p>
+
+                            <div class="formula-box">
+                                $$b=\overline{x}-x_{\text{referencia}}$$
+                            </div>
+
+                            <div class="demo-box">
+
+                                <div class="demo-heading">
+                                    <h4>Visualización del sesgo</h4>
+                                    <span class="live-label">INTERACTIVO</span>
+                                </div>
+
+                                <div class="target-wrapper"
+                                     id="biasTarget"></div>
+
+                                <p class="demo-description">
+                                    Observa cómo un conjunto de
+                                    mediciones puede agruparse
+                                    lejos del valor de referencia.
+                                </p>
+
+                                <button type="button" class="btn btn-secondary btn-full"
+                                        id="showBias">
+                                    Mostrar desplazamiento
+                                    <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==============================
+             CLASIFICACIÓN DE ERRORES
+        =============================== -->
+
+        <section id="clasificacion" class="classification-section">
+
+            <div class="section-container">
+
+                <!-- ENCABEZADO -->
+
+                <div class="classification-header">
+
+                    <span class="section-kicker">02 / ANÁLISIS NUMÉRICO</span>
+
+                    <h2>Clasificación de errores</h2>
+
+                    <p>
+                        No todas las aproximaciones son iguales.
+                        Conocer los errores nos permite evaluar la
+                        confiabilidad de nuestros resultados.
+                    </p>
+
+                </div>
+
+
+                <!-- INTRODUCCIÓN -->
+
+                <div class="classification-intro">
+
+                    <div class="intro-number">05</div>
+
+                    <div>
+                        <span class="small-label">CONCEPTOS FUNDAMENTALES</span>
+
+                        <h3>¿Cómo se clasifican los errores?</h3>
+
+                        <p>
+                            Podemos estudiar los errores comparando
+                            los resultados con un valor verdadero o
+                            analizando cómo se obtiene una aproximación.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- BLOQUE A: ERRORES DE COMPARACIÓN -->
+
+                <div class="error-group">
+
+                    <div class="group-heading">
+
+                        <div>
+                            <span class="group-index">01 — 03</span>
+                            <h3>Errores de comparación</h3>
+                            <p>
+                                Permiten medir la diferencia entre
+                                un resultado verdadero y uno aproximado.
+                            </p>
+                        </div>
+
+                        <span class="group-symbol">Δ</span>
+
+                    </div>
+
+
+                    <div class="error-cards">
+
+
+                        <!-- ERROR ABSOLUTO -->
+
+                        <article class="error-card absolute-card">
+
+                            <span class="error-number">01</span>
+
+                            <span class="error-type">MEDICIÓN DE DIFERENCIA</span>
+
+                            <h4>Error absoluto</h4>
+
+                            <p>
+                                Es la diferencia entre el valor verdadero
+                                y el valor aproximado, sin importar
+                                cuál de los dos sea mayor.
+                            </p>
+
+                            <div class="formula-box">
+                                <span>FÓRMULA</span>
+                                <strong>Ea = |V − Va|</strong>
+                            </div>
+
+                            <div class="mini-example">
+
+                                <span class="small-label">EJEMPLO</span>
+
+                                <p>
+                                    Valor verdadero: <strong>10</strong><br>
+                                    Valor aproximado: <strong>9.8</strong>
+                                </p>
+
+                                <div class="mini-result">
+                                    Ea = 0.2
+                                </div>
+
+                            </div>
+
+                        </article>
+
+
+                        <!-- ERROR RELATIVO -->
+
+                        <article class="error-card relative-card">
+
+                            <span class="error-number">02</span>
+
+                            <span class="error-type">PROPORCIÓN DEL ERROR</span>
+
+                            <h4>Error relativo</h4>
+
+                            <p>
+                                Compara el error absoluto con el valor
+                                verdadero para conocer la proporción
+                                de la diferencia.
+                            </p>
+
+                            <div class="formula-box">
+                                <span>FÓRMULA</span>
+                                <strong>Er = Ea / |V|</strong>
+                            </div>
+
+                            <div class="mini-example">
+
+                                <span class="small-label">EJEMPLO</span>
+
+                                <p>
+                                    Error absoluto: <strong>0.2</strong><br>
+                                    Valor verdadero: <strong>10</strong>
+                                </p>
+
+                                <div class="mini-result">
+                                    Er = 0.02
+                                </div>
+
+                            </div>
+
+                            <div class="why-box">
+
+                                <span class="small-label">¿POR QUÉ ES MÁS ÚTIL QUE EL ABSOLUTO?</span>
+
+                                <p>
+                                    El error absoluto no dice si una diferencia es
+                                    grande o pequeña: depende de qué tan grande es
+                                    lo que medimos. El relativo sí permite comparar
+                                    magnitudes distintas.
+                                </p>
+
+                                <div class="why-compare">
+                                    <div>
+                                        <span>TERRENO DE 100 m</span>
+                                        <strong>Ea = 1 cm</strong>
+                                        <small>Er = 0.0001 → 0.01 %</small>
+                                    </div>
+                                    <div>
+                                        <span>PIEZA DE 2 cm</span>
+                                        <strong>Ea = 1 cm</strong>
+                                        <small>Er = 0.5 → 50 %</small>
+                                    </div>
+                                </div>
+
+                                <p class="why-conclusion">
+                                    Mismo error absoluto, impacto totalmente distinto.
+                                </p>
+
+                            </div>
+
+                        </article>
+
+
+                        <!-- ERROR PORCENTUAL -->
+
+                        <article class="error-card percentage-card">
+
+                            <span class="error-number">03</span>
+
+                            <span class="error-type">EXPRESIÓN PORCENTUAL</span>
+
+                            <h4>Error porcentual</h4>
+
+                            <p>
+                                Convierte el error relativo en un
+                                porcentaje para facilitar su
+                                interpretación.
+                            </p>
+
+                            <div class="formula-box">
+                                <span>FÓRMULA</span>
+                                <strong>Ep = Er × 100</strong>
+                            </div>
+
+                            <div class="mini-example">
+
+                                <span class="small-label">EJEMPLO</span>
+
+                                <p>
+                                    Error relativo: <strong>0.02</strong>
+                                </p>
+
+                                <div class="mini-result">
+                                    Ep = 2%
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                </div>
+
+
+                <!-- BLOQUE B: ERRORES DE APROXIMACIÓN -->
+
+                <div class="error-group approximation-group">
+
+                    <div class="group-heading">
+
+                        <div>
+                            <span class="group-index">04 — 05</span>
+                            <h3>Errores de aproximación</h3>
+                            <p>
+                                Aparecen cuando reducimos la cantidad
+                                de cifras de un número.
+                            </p>
+                        </div>
+
+                        <span class="group-symbol">≈</span>
+
+                    </div>
+
+
+                    <div class="rounding-comparison">
+
+
+                        <!-- REDONDEO -->
+
+                        <article class="approximation-card rounding-card">
+
+                            <div class="approximation-top">
+
+                                <span class="error-number">04</span>
+
+                                <span class="small-label">AJUSTE DE CIFRAS</span>
+
+                            </div>
+
+                            <h4>Error por redondeo</h4>
+
+                            <p>
+                                Consiste en modificar el último dígito
+                                conservado cuando la siguiente cifra
+                                es igual o mayor que cinco.
+                            </p>
+
+                            <div class="number-example">
+
+                                <span>3.14159265</span>
+
+                                <i class="fa-solid fa-arrow-down" aria-hidden="true"></i>
+
+                                <strong>3.1416</strong>
+
+                            </div>
+
+                            <p class="approximation-note">
+                                Conservamos cuatro decimales y
+                                aumentamos el último dígito porque
+                                el siguiente es 9.
+                            </p>
+
+                            <div class="approximation-formula">
+                                <span>FÓRMULA</span>
+                                <strong>E<sub>redondeo</sub> = |V − V<sub>redondeado</sub>|</strong>
+                                <small>|3.14159265 − 3.1416| = 0.00000735</small>
+                            </div>
+
+                            <div class="device-example">
+
+                                <span class="small-label">
+                                    <i class="fa-solid fa-calculator" aria-hidden="true"></i>
+                                    EN COMPUTADORAS Y CALCULADORAS
+                                </span>
+
+                                <p>
+                                    Una calculadora solo guarda una cantidad fija de
+                                    dígitos, así que redondea sin avisarnos:
+                                </p>
+
+                                <code>2 ÷ 3 = 0.6666666667</code>
+
+                                <p>
+                                    El valor real tiene seises infinitos; el último
+                                    se convirtió en 7. Las computadoras trabajan en
+                                    binario y tampoco pueden guardar exactamente
+                                    algunos decimales:
+                                </p>
+
+                                <code>0.1 + 0.2 = 0.30000000000000004</code>
+
+                                <p>
+                                    Ese error es mínimo, pero en programas que repiten
+                                    millones de operaciones se va acumulando.
+                                </p>
+
+                            </div>
+
+                        </article>
+
+
+                        <!-- TRUNCAMIENTO -->
+
+                        <article class="approximation-card truncation-card">
+
+                            <div class="approximation-top">
+
+                                <span class="error-number">05</span>
+
+                                <span class="small-label">ELIMINACIÓN DE CIFRAS</span>
+
+                            </div>
+
+                            <h4>Error por truncamiento</h4>
+
+                            <p>
+                                Consiste en eliminar las cifras que
+                                sobran sin modificar el último dígito
+                                que se conserva.
+                            </p>
+
+                            <div class="number-example">
+
+                                <span>3.14159265</span>
+
+                                <i class="fa-solid fa-arrow-down" aria-hidden="true"></i>
+
+                                <strong>3.1415</strong>
+
+                            </div>
+
+                            <p class="approximation-note">
+                                Conservamos cuatro decimales y
+                                eliminamos todas las cifras restantes.
+                            </p>
+
+                            <div class="approximation-formula">
+                                <span>FÓRMULA</span>
+                                <strong>E<sub>truncamiento</sub> = |V − V<sub>truncado</sub>|</strong>
+                                <small>|3.14159265 − 3.1415| = 0.00009265</small>
+                            </div>
+
+                            <div class="device-example">
+
+                                <span class="small-label">
+                                    <i class="fa-solid fa-infinity" aria-hidden="true"></i>
+                                    CORTAR UNA SERIE INFINITA
+                                </span>
+
+                                <p>
+                                    La función e<sup>x</sup> se calcula con una suma
+                                    que nunca termina:
+                                </p>
+
+                                <code>e<sup>x</sup> = 1 + x + x²/2! + x³/3! + …</code>
+
+                                <p>
+                                    Si tomamos x = 1 y nos quedamos solo con los
+                                    primeros cuatro términos:
+                                </p>
+
+                                <code>e ≈ 1 + 1 + 0.5 + 0.1667 = 2.6667</code>
+
+                                <p>
+                                    El valor real es 2.71828…, así que el error de
+                                    truncamiento es <strong>0.0516</strong>
+                                    (<strong>1.90 %</strong>). Entre más términos
+                                    sumamos, menor es el error.
+                                </p>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                </div>
+
+
+                <!-- COMPARADOR INTERACTIVO -->
+
+                <div class="rounding-lab">
+
+                    <div class="lab-heading">
+
+                        <span class="small-label">EXPERIMENTA</span>
+
+                        <h3>Redondeo vs. truncamiento</h3>
+
+                        <p>
+                            Introduce un número y observa cómo
+                            cambian los resultados según el
+                            procedimiento utilizado.
+                        </p>
+
+                    </div>
+
+
+                    <div class="rounding-controls">
+
+                        <div class="control-field">
+
+                            <label for="roundingNumber">
+                                Número original
+                            </label>
+
+                            <input
+                                type="number"
+                                id="roundingNumber"
+                                value="3.14159265"
+                                step="any"
+                            >
+
+                        </div>
+
+
+                        <div class="control-field">
+
+                            <label for="decimalPlaces">
+                                Decimales a conservar
+                            </label>
+
+                            <select id="decimalPlaces">
+
+                                <option value="0">0 decimales</option>
+                                <option value="1">1 decimal</option>
+                                <option value="2">2 decimales</option>
+                                <option value="3">3 decimales</option>
+                                <option value="4" selected>4 decimales</option>
+                                <option value="5">5 decimales</option>
+                                <option value="6">6 decimales</option>
+                                <option value="7">7 decimales</option>
+                                <option value="8">8 decimales</option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="rounding-results">
+
+                        <div class="rounding-result">
+
+                            <span>REDONDEO</span>
+
+                            <strong id="roundedResult">3.1416</strong>
+
+                            <small id="roundedError">
+                                Error: 0.00000735
+                            </small>
+
+                        </div>
+
+
+                        <div class="rounding-result">
+
+                            <span>TRUNCAMIENTO</span>
+
+                            <strong id="truncatedResult">3.1415</strong>
+
+                            <small id="truncatedError">
+                                Error: 0.00009265
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <p class="rounding-explanation" id="roundingExplanation"
+                       aria-live="polite">
+
+                        Ambos procedimientos conservan cuatro decimales,
+                        pero utilizan reglas diferentes.
+
+                    </p>
+
+                </div>
+
+
+                <!-- TABLA COMPARATIVA -->
+
+                <div class="comparison-table-section">
+
+                    <div class="lab-heading">
+
+                        <span class="small-label">RESUMEN VISUAL</span>
+
+                        <h3>¿En qué se diferencian?</h3>
+
+                        <p>
+                            Una comparación rápida de los cinco
+                            tipos de errores.
+                        </p>
+
+                    </div>
+
+
+                    <div class="table-responsive">
+
+                        <table class="error-comparison-table">
+
+                            <thead>
+
+                                <tr>
+                                    <th>Tipo de error</th>
+                                    <th>¿Qué mide o hace?</th>
+                                    <th>Expresión</th>
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody>
+
+                                <tr>
+                                    <td>Error absoluto</td>
+                                    <td>Diferencia entre valores.</td>
+                                    <td>|V − Va|</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Error relativo</td>
+                                    <td>Proporción del error.</td>
+                                    <td>Ea / |V|</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Error porcentual</td>
+                                    <td>Error expresado en porcentaje.</td>
+                                    <td>Er × 100</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Redondeo</td>
+                                    <td>Ajusta el último dígito según la cifra siguiente.</td>
+                                    <td>|V − V<sub>redondeado</sub>|</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Truncamiento</td>
+                                    <td>Elimina las cifras sobrantes sin ajustar.</td>
+                                    <td>|V − V<sub>truncado</sub>|</td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+
+                <!-- LABORATORIO GENERAL -->
+
+                <div class="complete-error-lab" id="errorLaboratory">
+
+                    <div class="complete-lab-header">
+
+                        <span class="small-label">LABORATORIO INTERACTIVO / 01</span>
+
+                        <h3>Calculadora de errores numéricos</h3>
+
+                        <p>
+                            Ahora que conoces los conceptos,
+                            utiliza tus propios valores para calcular
+                            los diferentes tipos de errores.
+                        </p>
+
+                    </div>
+
+
+                    <div class="calculator-panel">
+
+                        <div class="calculator-inputs">
+
+                            <div class="control-field">
+
+                                <label for="laboratoryTrue">
+                                    Valor verdadero
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="laboratoryTrue"
+                                    value="10"
+                                    step="any"
+                                >
+
+                            </div>
+
+
+                            <div class="control-field">
+
+                                <label for="laboratoryApprox">
+                                    Valor aproximado
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="laboratoryApprox"
+                                    value="9.8"
+                                    step="any"
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="calculator-results"
+                             id="calculatorResults"
+                             aria-live="polite">
+
+                            <div class="calculation-result">
+
+                                <span>ERROR ABSOLUTO</span>
+
+                                <strong id="labAbsolute">0.2000</strong>
+
+                            </div>
+
+
+                            <div class="calculation-result">
+
+                                <span>ERROR RELATIVO</span>
+
+                                <strong id="labRelative">0.0200</strong>
+
+                            </div>
+
+
+                            <div class="calculation-result">
+
+                                <span>ERROR PORCENTUAL</span>
+
+                                <strong id="labPercentage">2.0000%</strong>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="calculation-steps" id="calculationSteps"
+                             aria-live="polite">
+
+                            <h4>Procedimiento</h4>
+
+                            <p>1. Error absoluto: |10 - 9.8| = 0.2000</p>
+
+                            <p>2. Error relativo: 0.2 / 10 = 0.0200</p>
+
+                            <p>3. Error porcentual: 0.02 × 100 = 2.0000%</p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="laboratory-footer">
+
+                        <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+
+                        <p>
+                            Los resultados se muestran con cuatro
+                            decimales. Los cálculos utilizan los valores
+                            originales, sin redondear los resultados
+                            intermedios.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CIERRE DE LA SECCIÓN -->
+
+                <div class="classification-conclusion">
+
+                    <span class="small-label">LO QUE DEBEMOS RECORDAR</span>
+
+                    <h3>Una aproximación siempre debe evaluarse.</h3>
+
+                    <p>
+                        No basta con obtener un resultado numérico.
+                        También debemos conocer la diferencia que existe
+                        entre nuestra aproximación y el valor verdadero
+                        para determinar si es suficientemente confiable
+                        para utilizarse en un problema de ingeniería.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- FIN: CLASIFICACIÓN -->
+
+
+        <!-- ==============================
+             CASO PRÁCTICO RESUELTO
+        =============================== -->
+
+        <section id="caso-practico" class="practical-section">
+
+            <div class="practical-container">
+
+                <!-- Encabezado -->
+                <div class="practical-header">
+                    <span class="section-tag">03 / APLICACIÓN</span>
+                    <h2>Del cálculo a la <span>realidad</span></h2>
+                    <p>
+                        Los errores numéricos no son solamente resultados matemáticos.
+                        En ingeniería, conocerlos permite evaluar mediciones,
+                        controlar procesos y tomar mejores decisiones.
+                        Resolvemos dos casos: un valor matemático conocido y
+                        una medición real de fábrica.
+                    </p>
+                </div>
+
+
+                <!-- ===== CASO 1: EL NÚMERO e ===== -->
+
+                <div class="case-introduction">
+
+                    <div class="case-text">
+                        <span class="case-label">CASO 1 · VALOR CONOCIDO</span>
+                        <h3>¿Qué tanto perdemos al aproximar el número <em>e</em>?</h3>
+
+                        <p>
+                            El número <em>e</em> aparece en el crecimiento de
+                            poblaciones, la descarga de un capacitor y el
+                            enfriamiento de materiales. Tiene una cantidad
+                            infinita de decimales, así que en la práctica
+                            siempre lo usamos aproximado.
+                        </p>
+
+                        <p>
+                            Vamos a compararlo contra dos aproximaciones a
+                            <strong>3 cifras significativas</strong>: una
+                            truncada y una redondeada.
+                        </p>
+                    </div>
+
+                    <div class="case-visual">
+                        <div class="e-visual">
+                            <span class="e-visual-label">VALOR VERDADERO</span>
+                            <div class="e-digits" aria-label="e es igual a 2.718281828">
+                                <span class="e-kept">2.71</span><span class="e-next">8</span><span class="e-rest">281828…</span>
+                            </div>
+                            <p>
+                                <span class="e-kept-dot"></span> 3 cifras que conservamos
+                                <span class="e-next-dot"></span> cifra que decide el redondeo
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Planteamiento -->
+                <div class="case-data-section">
+
+                    <div class="subsection-heading">
+                        <span class="small-index">01</span>
+                        <div>
+                            <h3>Planteamiento</h3>
+                            <p>Obtenemos las dos aproximaciones a partir del valor verdadero.</p>
+                        </div>
+                    </div>
+
+                    <div class="case-data-grid">
+
+                        <div class="data-card real-data">
+                            <span class="data-label">VALOR VERDADERO</span>
+                            <strong>2.718281828…</strong>
+                            <p>Número de Euler (<em>e</em>).</p>
+                        </div>
+
+                        <div class="data-card approximate-data">
+                            <span class="data-label">TRUNCADO A 3 C.S.</span>
+                            <strong>2.71</strong>
+                            <p>Conservamos 2, 7 y 1, y eliminamos todo lo demás.</p>
+                        </div>
+
+                        <div class="data-card tolerance-data">
+                            <span class="data-label">REDONDEADO A 3 C.S.</span>
+                            <strong>2.72</strong>
+                            <p>La cifra siguiente es 8 (≥ 5), por eso el 1 sube a 2.</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Desarrollo -->
+                <div class="resolution-section">
+
+                    <div class="subsection-heading">
+                        <span class="small-index">02</span>
+                        <div>
+                            <h3>Desarrollo paso a paso</h3>
+                            <p>Sustituimos en cada fórmula con V = 2.718281828.</p>
+                        </div>
+                    </div>
+
+                    <div class="resolution-cards">
+
+                        <!-- Error absoluto -->
+                        <article class="resolution-card">
+                            <div class="resolution-card-header">
+                                <span>PASO 01</span>
+                                <span class="formula-type">DIFERENCIA</span>
+                            </div>
+
+                            <h4>Error absoluto</h4>
+
+                            <div class="formula-box">
+                                <span>FÓRMULA</span>
+                                <strong>Ea = |V − Va|</strong>
+                            </div>
+
+                            <div class="operation-box">
+                                <span>TRUNCADO</span>
+                                <strong>|2.718281828 − 2.71|</strong>
+                                <span class="operation-result">= 0.008281828</span>
+                            </div>
+
+                            <div class="operation-box">
+                                <span>REDONDEADO</span>
+                                <strong>|2.718281828 − 2.72|</strong>
+                                <span class="operation-result">= 0.001718172</span>
+                            </div>
+                        </article>
+
+                        <!-- Error relativo -->
+                        <article class="resolution-card">
+                            <div class="resolution-card-header">
+                                <span>PASO 02</span>
+                                <span class="formula-type">PROPORCIÓN</span>
+                            </div>
+
+                            <h4>Error relativo</h4>
+
+                            <div class="formula-box">
+                                <span>FÓRMULA</span>
+                                <strong>Er = Ea / |V|</strong>
+                            </div>
+
+                            <div class="operation-box">
+                                <span>TRUNCADO</span>
+                                <strong>0.008281828 / 2.718281828</strong>
+                                <span class="operation-result">= 0.0030467</span>
+                            </div>
+
+                            <div class="operation-box">
+                                <span>REDONDEADO</span>
+                                <strong>0.001718172 / 2.718281828</strong>
+                                <span class="operation-result">= 0.0006321</span>
+                            </div>
+                        </article>
+
+                        <!-- Error porcentual -->
+                        <article class="resolution-card">
+                            <div class="resolution-card-header">
+                                <span>PASO 03</span>
+                                <span class="formula-type">PORCENTAJE</span>
+                            </div>
+
+                            <h4>Error relativo porcentual</h4>
+
+                            <div class="formula-box">
+                                <span>FÓRMULA</span>
+                                <strong>Ep = Er × 100</strong>
+                            </div>
+
+                            <div class="operation-box">
+                                <span>TRUNCADO</span>
+                                <strong>0.0030467 × 100</strong>
+                                <span class="operation-result">= 0.3047 %</span>
+                            </div>
+
+                            <div class="operation-box">
+                                <span>REDONDEADO</span>
+                                <strong>0.0006321 × 100</strong>
+                                <span class="operation-result">= 0.0632 %</span>
+                            </div>
+                        </article>
+
+                    </div>
+
+                    <!-- Resumen -->
+                    <div class="case-summary">
+                        <table class="case-summary-table">
+                            <caption>Resumen de resultados</caption>
+                            <thead>
+                                <tr>
+                                    <th>Aproximación</th>
+                                    <th>Valor</th>
+                                    <th>Ea</th>
+                                    <th>Er</th>
+                                    <th>Ep</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Truncada</td>
+                                    <td>2.71</td>
+                                    <td>0.008281828</td>
+                                    <td>0.0030467</td>
+                                    <td>0.3047 %</td>
+                                </tr>
+                                <tr class="is-best">
+                                    <td>Redondeada</td>
+                                    <td>2.72</td>
+                                    <td>0.001718172</td>
+                                    <td>0.0006321</td>
+                                    <td>0.0632 %</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+                <!-- Interpretación -->
+                <div class="interpretation-section">
+
+                    <div class="subsection-heading">
+                        <span class="small-index">03</span>
+                        <div>
+                            <h3>Interpretación en ingeniería</h3>
+                            <p>¿Qué significa realmente ese porcentaje de error?</p>
+                        </div>
+                    </div>
+
+                    <div class="interpretation-text">
+                        <p>
+                            Con la misma cantidad de cifras, el redondeo dio un error
+                            casi <strong>5 veces menor</strong> que el truncamiento
+                            (0.0632 % contra 0.3047 %). Un error de 0.3047 % significa
+                            que, por cada 1000 unidades calculadas, el resultado se
+                            desvía unas 3 unidades del valor real. Que ese error sea
+                            aceptable o no depende de cuánto margen permita el
+                            proyecto.
+                        </p>
+                    </div>
+
+                    <div class="scenario-grid">
+
+                        <article class="scenario-card is-acceptable">
+                            <span class="scenario-tag">
+                                <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+                                ACEPTABLE
+                            </span>
+                            <h4>Medir un terreno</h4>
+                            <p>
+                                En un terreno de 200 m de largo, un error de 0.3047 %
+                                equivale a unos <strong>61 cm</strong>; con el
+                                redondeo serían unos <strong>13 cm</strong>. Para
+                                calcular material, cercar o hacer una cotización,
+                                esa diferencia no cambia la decisión.
+                            </p>
+                        </article>
+
+                        <article class="scenario-card is-critical">
+                            <span class="scenario-tag">
+                                <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
+                                CATASTRÓFICO
+                            </span>
+                            <h4>Calibrar una pieza aeroespacial</h4>
+                            <p>
+                                Un álabe de turbina de 100 mm puede tener una
+                                tolerancia de ±0.01 mm. El 0.3047 % equivale a
+                                <strong>0.30 mm</strong>: 30 veces lo permitido.
+                                Incluso el redondeo (0.06 mm) se pasa 6 veces. La
+                                pieza vibraría y podría romperse en pleno vuelo.
+                            </p>
+                        </article>
+
+                    </div>
+
+                    <div class="data-note">
+                        <span class="note-symbol">i</span>
+                        <p>
+                            <strong>Caso real:</strong> en 1991, el sistema de defensa
+                            Patriot guardaba el tiempo con un valor de 0.1 truncado
+                            en binario. El error era de apenas 0.0000001 segundos por
+                            décima, pero después de 100 horas encendido se acumuló
+                            un desfase de 0.34 s, suficiente para fallar al
+                            interceptar un misil. Un error pequeño, repetido miles
+                            de veces, puede volverse enorme.
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- Conclusión del caso 1 -->
+                <div class="practical-conclusion">
+                    <span class="case-label">CONCLUSIÓN DEL CASO 1</span>
+                    <h3>Redondear al final y conservar cifras en el proceso.</h3>
+                    <p>
+                        El redondeo aproxima mejor que el truncamiento porque toma
+                        en cuenta la cifra que se elimina. En ingeniería conviene
+                        trabajar con todas las cifras posibles durante los cálculos
+                        y redondear solo el resultado final, de acuerdo con la
+                        precisión que el proyecto realmente necesita.
+                    </p>
+                </div>
+
+
+                <!-- ===== CASO 2: PIEZA METÁLICA ===== -->
+
+                <div class="case-divider">
+                    <span>CASO 2</span>
+                    <p>Ahora aplicamos las mismas fórmulas a una medición real de fábrica.</p>
+                </div>
+
+                <!-- Introducción del problema -->
+                <div class="case-introduction">
+
+                    <div class="case-text">
+                        <span class="case-label">CASO 2 · MANUFACTURA</span>
+                        <h3>Control de calidad en una pieza metálica</h3>
+
+                        <p>
+                            En una fábrica se producen piezas metálicas que deben
+                            cumplir con medidas específicas para funcionar
+                            correctamente dentro de un mecanismo.
+                        </p>
+
+                        <p>
+                            Durante una inspección, un técnico mide una pieza y
+                            obtiene un resultado ligeramente diferente al valor
+                            establecido en el diseño.
+                        </p>
+
+                        <p>
+                            El objetivo es calcular los errores de medición y
+                            determinar si la pieza cumple con las especificaciones.
+                        </p>
+                    </div>
+
+                    <div class="case-visual">
+                        <div class="measurement-visual">
+                            <div class="measurement-top">
+                                <span>MEDICIÓN INDUSTRIAL</span>
+                                <span class="measurement-status">EN ANÁLISIS</span>
+                            </div>
+
+                            <div class="metal-piece">
+                                <div class="metal-cylinder"></div>
+                                <div class="measurement-line"></div>
+                                <span class="measurement-value">49.85 mm</span>
+                            </div>
+
+                            <div class="measurement-caption">
+                                <span>PIEZA METÁLICA</span>
+                                <span>CONTROL DIMENSIONAL</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Datos del problema -->
+                <div class="case-data-section">
+
+                    <div class="subsection-heading">
+                        <span class="small-index">01</span>
+                        <div>
+                            <h3>Identificación de los datos</h3>
+                            <p>Antes de resolver, identificamos los valores conocidos.</p>
+                        </div>
+                    </div>
+
+                    <div class="case-data-grid">
+
+                        <div class="data-card real-data">
+                            <span class="data-label">VALOR REAL</span>
+                            <strong>50.00 <small>mm</small></strong>
+                            <p>Medida establecida en el diseño.</p>
+                        </div>
+
+                        <div class="data-card approximate-data">
+                            <span class="data-label">VALOR APROXIMADO</span>
+                            <strong>49.85 <small>mm</small></strong>
+                            <p>Medida obtenida durante la inspección.</p>
+                        </div>
+
+                        <div class="data-card tolerance-data">
+                            <span class="data-label">TOLERANCIA PERMITIDA</span>
+                            <strong>±0.10 <small>mm</small></strong>
+                            <p>Variación máxima aceptada.</p>
+                        </div>
+
+                    </div>
+
+                    <div class="data-note">
+                        <span class="note-symbol">i</span>
+                        <p>
+                            La tolerancia representa el margen de variación permitido.
+                            Una pieza puede presentar una diferencia respecto al valor
+                            nominal y aun así ser aceptada, siempre que permanezca
+                            dentro del rango establecido.
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- Resolución paso a paso -->
+                <div class="resolution-section">
+
+                    <div class="subsection-heading">
+                        <span class="small-index">02</span>
+                        <div>
+                            <h3>Resolución paso a paso</h3>
+                            <p>Aplicamos las fórmulas para conocer la magnitud del error.</p>
+                        </div>
+                    </div>
+
+                    <div class="resolution-cards">
+
+                        <!-- Error absoluto -->
+                        <article class="resolution-card">
+                            <div class="resolution-card-header">
+                                <span>PASO 01</span>
+                                <span class="formula-type">DIFERENCIA</span>
+                            </div>
+
+                            <h4>Error absoluto</h4>
+
+                            <p>
+                                Es la diferencia entre el valor real y el valor
+                                aproximado, expresada como una cantidad positiva.
+                            </p>
+
+                            <div class="formula-box">
+                                <span>FÓRMULA</span>
+                                <strong>Ea = |V − Va|</strong>
+                            </div>
+
+                            <div class="operation-box">
+                                <span>SUSTITUCIÓN</span>
+                                <strong>|50.00 − 49.85|</strong>
+                                <span class="operation-result">= 0.15 mm</span>
+                            </div>
+
+                            <p class="resolution-explanation">
+                                La medición presenta una diferencia de 0.15 mm
+                                respecto al valor real.
+                            </p>
+                        </article>
+
+                        <!-- Error relativo -->
+                        <article class="resolution-card">
+                            <div class="resolution-card-header">
+                                <span>PASO 02</span>
+                                <span class="formula-type">PROPORCIÓN</span>
+                            </div>
+
+                            <h4>Error relativo</h4>
+
+                            <p>
+                                Indica qué proporción representa el error absoluto
+                                con respecto al valor real.
+                            </p>
+
+                            <div class="formula-box">
+                                <span>FÓRMULA</span>
+                                <strong>Er = Ea / |V|</strong>
+                            </div>
+
+                            <div class="operation-box">
+                                <span>SUSTITUCIÓN</span>
+                                <strong>0.15 / 50.00</strong>
+                                <span class="operation-result">= 0.003</span>
+                            </div>
+
+                            <p class="resolution-explanation">
+                                El error representa una proporción de 0.003
+                                respecto a la medida real.
+                            </p>
+                        </article>
+
+                        <!-- Error porcentual -->
+                        <article class="resolution-card">
+                            <div class="resolution-card-header">
+                                <span>PASO 03</span>
+                                <span class="formula-type">PORCENTAJE</span>
+                            </div>
+
+                            <h4>Error porcentual</h4>
+
+                            <p>
+                                Expresa el error relativo como porcentaje para
+                                facilitar su interpretación.
+                            </p>
+
+                            <div class="formula-box">
+                                <span>FÓRMULA</span>
+                                <strong>Ep = Er × 100</strong>
+                            </div>
+
+                            <div class="operation-box">
+                                <span>SUSTITUCIÓN</span>
+                                <strong>0.003 × 100</strong>
+                                <span class="operation-result">= 0.30 %</span>
+                            </div>
+
+                            <p class="resolution-explanation">
+                                La diferencia equivale al 0.30 % del valor real.
+                            </p>
+                        </article>
+
+                    </div>
+                </div>
+
+                <!-- Interpretación de resultados -->
+                <div class="interpretation-section">
+
+                    <div class="subsection-heading">
+                        <span class="small-index">03</span>
+                        <div>
+                            <h3>Interpretación en ingeniería</h3>
+                            <p>Un resultado matemático también debe ayudar a tomar decisiones.</p>
+                        </div>
+                    </div>
+
+                    <div class="tolerance-panel">
+
+                        <div class="tolerance-information">
+                            <span class="case-label">EVALUACIÓN DE CALIDAD</span>
+                            <h4>¿La pieza cumple con la tolerancia?</h4>
+
+                            <p>
+                                La medida nominal es de 50.00 mm y la tolerancia
+                                permitida es de ±0.10 mm.
+                            </p>
+
+                            <div class="tolerance-values">
+                                <div>
+                                    <span>MEDIDA MÍNIMA</span>
+                                    <strong>49.90 mm</strong>
+                                </div>
+                                <div>
+                                    <span>MEDIDA MÁXIMA</span>
+                                    <strong>50.10 mm</strong>
+                                </div>
+                            </div>
+
+                            <p class="tolerance-conclusion">
+                                La medición de 49.85 mm está por debajo del límite
+                                mínimo permitido.
+                            </p>
+                        </div>
+
+                        <div class="tolerance-visual">
+                            <div class="tolerance-scale">
+                                <div class="scale-labels">
+                                    <span>49.80</span>
+                                    <span>49.90</span>
+                                    <span>50.00</span>
+                                    <span>50.10</span>
+                                    <span>50.20</span>
+                                </div>
+
+                                <div class="scale-track">
+                                    <div class="scale-accepted"></div>
+                                    <div class="scale-marker measured-marker"></div>
+                                    <div class="scale-marker nominal-marker"></div>
+                                </div>
+
+                                <div class="scale-legend">
+                                    <span><i class="legend-dot measured-dot"></i> Medición: 49.85 mm</span>
+                                    <span><i class="legend-dot nominal-dot"></i> Valor nominal: 50.00 mm</span>
+                                </div>
+                            </div>
+
+                            <div class="quality-result">
+                                <span class="result-indicator"></span>
+                                <div>
+                                    <strong>Fuera de tolerancia</strong>
+                                    <p>Se requiere revisión o ajuste de la pieza.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Conclusión -->
+                <div class="practical-conclusion">
+                    <span class="case-label">CONCLUSIÓN DEL CASO 2</span>
+                    <h3>Calcular el error permite evaluar la calidad.</h3>
+                    <p>
+                        Aunque el error porcentual obtenido es de 0.30 %, la pieza
+                        no cumple con la tolerancia establecida. Esto demuestra que
+                        no basta con conocer el porcentaje de error: también es
+                        necesario compararlo con los límites y requisitos del
+                        proceso de fabricación.
+                    </p>
+                </div>
+
+                <!-- Laboratorio interactivo -->
+                <div class="practical-lab">
+
+                    <div class="lab-heading">
+                        <span class="section-tag">EXPERIMENTA</span>
+                        <h3>Ahora resuelve tu propio caso</h3>
+                        <p>
+                            Modifica los valores y observa cómo cambian los errores.
+                            Puedes utilizar otros datos para practicar.
+                        </p>
+                    </div>
+
+                    <div class="practical-lab-grid">
+
+                        <div class="lab-input-panel">
+
+                            <label for="practicalTrueValue">Valor real</label>
+                            <div class="lab-input-wrap">
+                                <input
+                                    type="number"
+                                    id="practicalTrueValue"
+                                    value="50"
+                                    step="any"
+                                >
+                                <span>mm</span>
+                            </div>
+
+                            <label for="practicalApproxValue">Valor aproximado</label>
+                            <div class="lab-input-wrap">
+                                <input
+                                    type="number"
+                                    id="practicalApproxValue"
+                                    value="49.85"
+                                    step="any"
+                                >
+                                <span>mm</span>
+                            </div>
+
+                            <label for="practicalTolerance">Tolerancia permitida</label>
+                            <div class="lab-input-wrap">
+                                <input
+                                    type="number"
+                                    id="practicalTolerance"
+                                    value="0.10"
+                                    min="0"
+                                    step="any"
+                                >
+                                <span>mm</span>
+                            </div>
+
+                            <button type="button" id="resetPracticalCase" class="reset-case-btn">
+                                Restaurar ejemplo original
+                            </button>
+
+                            <p id="practicalErrorMessage" class="lab-error-message" aria-live="polite"></p>
+
+                        </div>
+
+                        <div class="lab-results-panel">
+
+                            <div class="lab-results-heading">
+                                <span>RESULTADOS DEL CÁLCULO</span>
+                                <span class="live-indicator">ACTUALIZABLE</span>
+                            </div>
+
+                            <div class="lab-result-grid">
+
+                                <div class="lab-result-item">
+                                    <span>ERROR ABSOLUTO</span>
+                                    <strong id="practicalAbsoluteResult">0.1500</strong>
+                                    <small>mm</small>
+                                </div>
+
+                                <div class="lab-result-item">
+                                    <span>ERROR RELATIVO</span>
+                                    <strong id="practicalRelativeResult">0.0030</strong>
+                                    <small>Sin unidad</small>
+                                </div>
+
+                                <div class="lab-result-item">
+                                    <span>ERROR PORCENTUAL</span>
+                                    <strong id="practicalPercentageResult">0.3000</strong>
+                                    <small>%</small>
+                                </div>
+
+                            </div>
+
+                            <div class="lab-decision" id="practicalDecision" aria-live="polite">
+                                <span class="decision-symbol">!</span>
+                                <div>
+                                    <strong id="practicalDecisionTitle">Fuera de tolerancia</strong>
+                                    <p id="practicalDecisionText">
+                                        La medición supera la variación permitida.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="lab-procedure">
+                                <h4>Procedimiento del cálculo</h4>
+                                <div id="practicalProcedure">
+                                    <p>1. Error absoluto: |50 - 49.85| = 0.15 mm</p>
+                                    <p>2. Error relativo: 0.15 / 50 = 0.003</p>
+                                    <p>3. Error porcentual: 0.003 × 100 = 0.30 %</p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ==============================
+             ZONA INTERACTIVA
+        =============================== -->
+
+        <section id="zona-interactiva" class="interactive-section">
+
+            <div class="interactive-container">
+
+                <!-- ENCABEZADO GENERAL -->
+                <header class="interactive-header">
+                    <span class="interactive-tag">04 / EXPERIMENTACIÓN</span>
+                    <h2>Pon a prueba tu <span>precisión</span></h2>
+                    <p>
+                        Llegó el momento de aplicar lo aprendido. Experimenta con
+                        diferentes valores, responde los desafíos y descubre qué
+                        tan bien comprendes los métodos numéricos.
+                    </p>
+                </header>
+
+                <!-- ==================================
+                     EXPERIENCIA 1: LABORATORIO
+                =================================== -->
+
+                <div class="interactive-experience">
+
+                    <div class="experience-heading">
+                        <span class="experience-number">01</span>
+                        <div>
+                            <span class="experience-label">EXPERIMENTA</span>
+                            <h3>Laboratorio de cálculo</h3>
+                            <p>
+                                Modifica los valores y compara los resultados de
+                                diferentes aproximaciones numéricas.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="interactive-calculator">
+
+                        <div class="calculator-inputs">
+
+                            <div class="interactive-field">
+                                <label for="interactiveTrueValue">Valor real</label>
+                                <input
+                                    type="number"
+                                    id="interactiveTrueValue"
+                                    value="3.14159265"
+                                    step="any"
+                                >
+                                <small>Valor de referencia.</small>
+                            </div>
+
+                            <div class="interactive-field">
+                                <label for="interactiveApproxValue">Valor aproximado</label>
+                                <input
+                                    type="number"
+                                    id="interactiveApproxValue"
+                                    value="3.14"
+                                    step="any"
+                                >
+                                <small>Valor que deseas evaluar.</small>
+                            </div>
+
+                            <div class="interactive-field">
+                                <label for="interactiveDecimals">Cantidad de decimales</label>
+                                <select id="interactiveDecimals">
+                                    <option value="0">0 decimales</option>
+                                    <option value="1">1 decimal</option>
+                                    <option value="2">2 decimales</option>
+                                    <option value="3">3 decimales</option>
+                                    <option value="4" selected>4 decimales</option>
+                                    <option value="5">5 decimales</option>
+                                    <option value="6">6 decimales</option>
+                                    <option value="7">7 decimales</option>
+                                    <option value="8">8 decimales</option>
+                                </select>
+                                <small>Precisión de la aproximación.</small>
+                            </div>
+
+                            <button type="button" id="resetInteractiveCalculator" class="interactive-secondary-btn">
+                                Restaurar valores
+                            </button>
+
+                            <p id="interactiveCalculatorError" class="interactive-error" aria-live="polite"></p>
+
+                        </div>
+
+                        <div class="calculator-results">
+
+                            <div class="calculator-results-header">
+                                <span>RESULTADOS DEL EXPERIMENTO</span>
+                                <span class="calculator-live">● EN VIVO</span>
+                            </div>
+
+                            <div class="approximation-comparison">
+
+                                <div class="approximation-result rounding-result">
+                                    <span>REDONDEO</span>
+                                    <strong id="interactiveRoundedValue">3.1416</strong>
+                                    <small id="interactiveRoundedError">Error: 0.00000735</small>
+                                </div>
+
+                                <div class="approximation-result truncation-result">
+                                    <span>TRUNCAMIENTO</span>
+                                    <strong id="interactiveTruncatedValue">3.1415</strong>
+                                    <small id="interactiveTruncatedError">Error: 0.00009265</small>
+                                </div>
+
+                            </div>
+
+                            <div class="interactive-error-results">
+
+                                <div>
+                                    <span>ERROR ABSOLUTO</span>
+                                    <strong id="interactiveAbsoluteError">0.00159265</strong>
+                                </div>
+
+                                <div>
+                                    <span>ERROR RELATIVO</span>
+                                    <strong id="interactiveRelativeError">0.00050696</strong>
+                                </div>
+
+                                <div>
+                                    <span>ERROR PORCENTUAL</span>
+                                    <strong id="interactivePercentageError">0.050696%</strong>
+                                </div>
+
+                            </div>
+
+                            <div class="calculator-observation">
+                                <span class="observation-icon">i</span>
+                                <p id="interactiveObservation" aria-live="polite">
+                                    El redondeo y el truncamiento producen resultados
+                                    diferentes. Compara sus errores para identificar
+                                    cuál se aproxima más al valor real.
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="calculator-note">
+                        <strong>¿Qué debes observar?</strong>
+                        <p>
+                            Una aproximación no es necesariamente exacta. Mientras
+                            menor sea el error absoluto, más cerca estará el resultado
+                            del valor real. Si el valor real es cero, los errores
+                            relativo y porcentual no están definidos.
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- ==================================
+                     EXPERIENCIA 2: CUESTIONARIO
+                =================================== -->
+
+                <div class="interactive-experience quiz-experience">
+
+                    <div class="experience-heading">
+                        <span class="experience-number">02</span>
+                        <div>
+                            <span class="experience-label">PONTE A PRUEBA</span>
+                            <h3>Reto de conocimientos</h3>
+                            <p>
+                                Ocho preguntas para comprobar cuánto aprendiste
+                                sobre métodos numéricos y errores.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="quiz-container" id="numericalQuiz">
+
+                        <!-- INICIO DEL CUESTIONARIO -->
+                        <div class="quiz-start" id="quizStart">
+
+                            <div class="quiz-start-icon">01—08</div>
+
+                            <h4>¿Qué tanto dominas los métodos numéricos?</h4>
+
+                            <p>
+                                Lee cada pregunta y selecciona la respuesta que
+                                consideres correcta. Al finalizar conocerás tu
+                                resultado y podrás revisar tus respuestas.
+                            </p>
+
+                            <div class="quiz-information">
+                                <span>8 preguntas</span>
+                                <span>4 opciones por pregunta</span>
+                                <span>Retroalimentación inmediata</span>
+                            </div>
+
+                            <button type="button" id="startQuiz" class="interactive-primary-btn">
+                                Comenzar cuestionario <span>→</span>
+                            </button>
+
+                        </div>
+
+                        <!-- PREGUNTAS -->
+                        <div class="quiz-question-area" id="quizQuestionArea" hidden>
+
+                            <div class="quiz-progress-header">
+                                <span id="quizQuestionCounter">PREGUNTA 1 DE 8</span>
+                                <span id="quizScoreCounter">ACIERTOS: 0</span>
+                            </div>
+
+                            <div
+                                class="quiz-progress-track"
+                                role="progressbar"
+                                aria-label="Progreso del cuestionario"
+                                aria-valuemin="0"
+                                aria-valuemax="8"
+                                aria-valuenow="0"
+                                id="quizProgressBar"
+                            >
+                                <div class="quiz-progress-fill" id="quizProgressFill"></div>
+                            </div>
+
+                            <h4 id="quizQuestionText"></h4>
+
+                            <div class="quiz-options" id="quizOptions"></div>
+
+                            <div class="quiz-feedback" id="quizFeedback" aria-live="polite" hidden>
+                                <strong id="quizFeedbackTitle"></strong>
+                                <p id="quizFeedbackText"></p>
+                            </div>
+
+                            <button type="button" id="nextQuizQuestion" class="interactive-primary-btn" disabled>
+                                Siguiente pregunta <span>→</span>
+                            </button>
+
+                        </div>
+
+                        <!-- RESULTADO FINAL -->
+                        <div class="quiz-final-result" id="quizFinalResult" hidden>
+
+                            <span class="experience-label">RESULTADO FINAL</span>
+
+                            <div class="quiz-score-circle">
+                                <strong id="quizFinalScore">0/8</strong>
+                                <span>ACIERTOS</span>
+                            </div>
+
+                            <h4 id="quizFinalTitle">¡Buen trabajo!</h4>
+
+                            <p id="quizFinalMessage"></p>
+
+                            <div class="quiz-final-details">
+                                <div>
+                                    <strong id="quizCorrectAnswers">0</strong>
+                                    <span>Correctas</span>
+                                </div>
+                                <div>
+                                    <strong id="quizIncorrectAnswers">0</strong>
+                                    <span>Incorrectas</span>
+                                </div>
+                                <div>
+                                    <strong id="quizFinalPercentage">0%</strong>
+                                    <span>Calificación</span>
+                                </div>
+                            </div>
+
+                            <button type="button" id="restartQuiz" class="interactive-primary-btn">
+                                Intentar nuevamente <span>↻</span>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- ==================================
+                     EXPERIENCIA 3: DESAFÍO FINAL
+                =================================== -->
+
+                <div class="interactive-experience final-challenge">
+
+                    <div class="experience-heading">
+                        <span class="experience-number">03</span>
+                        <div>
+                            <span class="experience-label">DESAFÍO FINAL</span>
+                            <h3>¿Puedes detectar el error?</h3>
+                            <p>
+                                Analiza la situación y toma una decisión como si
+                                formaras parte de un equipo de control de calidad.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="challenge-card">
+
+                        <div class="challenge-context">
+
+                            <span class="challenge-status">CASO DE INSPECCIÓN / 001</span>
+
+                            <h4>Una pieza bajo evaluación</h4>
+
+                            <p>
+                                Una empresa necesita fabricar una pieza metálica
+                                cuya medida nominal debe ser de 25.00 mm, con una
+                                tolerancia máxima de ±0.05 mm.
+                            </p>
+
+                            <p>
+                                Durante una inspección, un instrumento registra
+                                una medición de <strong>24.92 mm</strong>.
+                            </p>
+
+                            <div class="challenge-data">
+                                <div>
+                                    <span>VALOR NOMINAL</span>
+                                    <strong>25.00 mm</strong>
+                                </div>
+                                <div>
+                                    <span>MEDICIÓN</span>
+                                    <strong>24.92 mm</strong>
+                                </div>
+                                <div>
+                                    <span>TOLERANCIA</span>
+                                    <strong>±0.05 mm</strong>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="challenge-question">
+
+                            <span class="challenge-question-label">TU DECISIÓN</span>
+
+                            <h4>¿La pieza cumple con las especificaciones?</h4>
+
+                            <div class="challenge-options" id="challengeOptions">
+
+                                <button type="button" class="challenge-option" data-answer="accept">
+                                    <span class="challenge-option-letter">A</span>
+                                    <span>
+                                        <strong>Sí, cumple.</strong>
+                                        <small>La diferencia es suficientemente pequeña.</small>
+                                    </span>
+                                </button>
+
+                                <button type="button" class="challenge-option" data-answer="reject">
+                                    <span class="challenge-option-letter">B</span>
+                                    <span>
+                                        <strong>No, está fuera de tolerancia.</strong>
+                                        <small>La diferencia supera el límite permitido.</small>
+                                    </span>
+                                </button>
+
+                                <button type="button" class="challenge-option" data-answer="unknown">
+                                    <span class="challenge-option-letter">C</span>
+                                    <span>
+                                        <strong>No se puede determinar.</strong>
+                                        <small>Se necesitan más datos para decidir.</small>
+                                    </span>
+                                </button>
+
+                            </div>
+
+                            <div class="challenge-feedback" id="challengeFeedback" aria-live="polite" hidden>
+                                <strong id="challengeFeedbackTitle"></strong>
+                                <p id="challengeFeedbackText"></p>
+                            </div>
+
+                            <button type="button" id="showChallengeSolution" class="interactive-secondary-btn" hidden>
+                                Consultar resolución paso a paso
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <!-- RESOLUCIÓN DEL DESAFÍO -->
+                    <div class="challenge-solution" id="challengeSolution" hidden>
+
+                        <div class="solution-heading">
+                            <span class="experience-label">RESOLUCIÓN DEL DESAFÍO</span>
+                            <h4>Comprobemos el resultado</h4>
+                        </div>
+
+                        <div class="challenge-solution-steps">
+
+                            <div>
+                                <span>01 / ERROR ABSOLUTO</span>
+                                <strong>|25.00 - 24.92| = 0.08 mm</strong>
+                            </div>
+
+                            <div>
+                                <span>02 / LÍMITE PERMITIDO</span>
+                                <strong>0.05 mm</strong>
+                            </div>
+
+                            <div>
+                                <span>03 / COMPARACIÓN</span>
+                                <strong>0.08 mm > 0.05 mm</strong>
+                            </div>
+
+                        </div>
+
+                        <div class="challenge-final-verdict">
+                            <strong>Resultado: pieza rechazada.</strong>
+                            <p>
+                                El error absoluto es de 0.08 mm y supera la tolerancia
+                                permitida de 0.05 mm. Por lo tanto, la pieza no cumple
+                                con las especificaciones y debe revisarse.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- EXPERIENCIA 4: CUESTIONARIO EN GOOGLE FORMS -->
+                <div class="interactive-experience forms-experience">
+
+                    <div class="experience-heading">
+                        <span class="experience-number">04</span>
+                        <div>
+                            <span class="experience-label">AUTOEVALUACIÓN</span>
+                            <h3>Mini quiz en Google Forms</h3>
+                            <p>
+                                Cinco preguntas sobre los temas de la página.
+                                Al enviar tus respuestas puedes consultar tu
+                                calificación.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="forms-embed">
+                        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfiS6kZZ1XzqWi5TOg7nTa1QyKyLgrmUVW78OgJjMN2iK17eQ/viewform?embedded=true"
+                                title="Mini quiz de métodos numéricos"
+                                loading="lazy">
+                            Cargando…
+                        </iframe>
+                    </div>
+
+                    <p class="forms-fallback">
+                        <a href="https://forms.gle/A9aJ2v5FGKSHCh7U7" target="_blank" rel="noopener">
+                            Abrir el cuestionario en otra pestaña ↗
+                        </a>
+                    </p>
+
+                </div>
+
+                <!-- CIERRE DE LA SECCIÓN -->
+                <div class="interactive-closing">
+                    <span class="interactive-tag">FIN DEL RECORRIDO</span>
+                    <h3>Comprender el error también es parte de la precisión.</h3>
+                    <p>
+                        Los métodos numéricos permiten aproximar soluciones,
+                        analizar resultados y resolver problemas reales. Su
+                        importancia no está en evitar cualquier error, sino
+                        en comprenderlo, medirlo y saber cómo actuar ante él.
+                    </p>
+                    <a href="#inicio" class="back-to-top">Volver al inicio ↑</a>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- FIN: ZONA INTERACTIVA -->
+
+
+        <!-- ==============================
+             EQUIPO
+        =============================== -->
+
+        <section class="team section-padding" id="equipo">
+
+            <div class="container">
+
+                <div class="team-content">
+
+                    <span class="eyebrow">SOBRE EL PROYECTO</span>
+
+                    <h2>
+                        El conocimiento también
+                        <span>se construye.</span>
+                    </h2>
+
+                    <p>
+                        Margen de Error es un proyecto educativo
+                        desarrollado para facilitar la comprensión
+                        de los métodos numéricos y su aplicación
+                        en problemas de ingeniería.
+                    </p>
+
+                    <div class="team-members">
+
+                        <div class="team-member">
+                            <span class="member-number">01</span>
+                            <div>
+                                <strong>Lady Solis</strong>
+                                <small>Desarrollo y contenido</small>
+                            </div>
+                        </div>
+
+                        <div class="team-member">
+                            <span class="member-number">02</span>
+                            <div>
+                                <strong>Itzel Guzmán</strong>
+                                <small>Desarrollo y contenido</small>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="project-info">
+                        <span>MATERIA</span>
+                        <strong>Matemáticas para Ingeniería II</strong>
+
+                        <span>PROYECTO ACADÉMICO</span>
+                        <strong>Corte 3</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ==============================
+         PIE DE PÁGINA
+    =============================== -->
+
+    <footer class="footer">
+
+        <div class="container footer-content">
+
+            <a href="#inicio" class="footer-brand">
+                Margen de Error<span>.</span>
+            </a>
+
+            <p>
+                Comprender la aproximación. Analizar el error.
+                Mejorar la precisión.
+            </p>
+
+            <div class="footer-line"></div>
+
+            <div class="footer-bottom">
+
+                <span>© 2026 Margen de Error</span>
+
+                <span>MATEMÁTICAS PARA INGENIERÍA II</span>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+</body>
+</html>
